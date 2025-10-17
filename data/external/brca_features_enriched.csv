@@ -1,0 +1,11 @@
+HGVS,CADD_PHRED,REVEL_score,Consequence
+NM_007294.3:c.68_69delAG,35.0,0.92,frameshift_variant
+NM_007294.3:c.181T>G,20.5,0.65,missense_variant
+NM_000059.3:c.5946delT,32.1,0.88,frameshift_variant
+NM_000059.3:c.7008T>A,10.2,0.21,missense_variant
+NM_007294.3:c.5266dupC,34.8,0.91,frameshift_variant
+NM_000059.3:c.7558C>T,12.3,0.3,missense_variant
+NM_007294.3:c.5096G>A,15.9,0.44,missense_variant
+NM_000059.3:c.2808_2811delACAA,28.4,0.79,frameshift_variant
+NM_007294.3:c.3847_3848delGT,33.0,0.9,frameshift_variant
+NM_000059.3:c.1794C>T,8.7,0.18,synonymous_variant
