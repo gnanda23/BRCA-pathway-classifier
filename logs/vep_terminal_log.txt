@@ -1,0 +1,44 @@
+VEP INSTALLATION NOTES
+=========================
+
+Date: October 17, 2025
+System: macOS with Homebrew, Perl 5.34
+
+INSTALL LOCATION:
+  /Users/geetmacbookpro/vep_project/ensembl-vep
+
+CACHE DIR:
+  /Volumes/Seagate8/.vep
+
+FASTA FILE:
+  /Volumes/Seagate8/.vep/homo_sapiens/115_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa.gz
+
+INSTALLATION STEPS:
+
+1. Clone VEP:
+   git clone https://github.com/Ensembl/ensembl-vep.git
+
+2. Run installer:
+   perl INSTALL.pl \
+     --AUTO c \
+     --SPECIES homo_sapiens \
+     --ASSEMBLY GRCh38 \
+     --CACHE_VERSION 115 \
+     --CACHEDIR "/Volumes/Seagate8/.vep" \
+     --NO_HTSLIB
+
+3. Install FASTA:
+   perl INSTALL.pl \
+     --AUTO f \
+     --SPECIES homo_sapiens \
+     --ASSEMBLY GRCh38 \
+     --CACHEDIR "/Volumes/Seagate8/.vep"
+
+4. Run VEP:
+   (See run_vep.sh)
+
+ERRORS ENCOUNTERED:
+
+- Missing `watch` command (installed with `brew install watch`)
+- Download interrupted due to Seagate drive disconnection (re-run required)
+- Chromosome mismatch errors (resolved by confirming cache download completed)
