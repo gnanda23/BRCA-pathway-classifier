@@ -1,2 +1,2 @@
-Gene,Total_Variants,Most_Severe_Consequence,Unique_Transcript_Count,Pathogenic_ClinVar_Calls,SIFT_deleterious,PolyPhen_damaging
-BRCA1,3,missense_variant,2,0,2,2
+Total Variants,Unique Genes,Most Severe Consequence,Consequence Breakdown
+2,2,missense_variant,"{'missense_variant': 25, 'start_lost,NMD_transcript_variant': 8, 'non_coding_transcript_exon_variant': 6, 'start_lost': 6, 'missense_variant,NMD_transcript_variant': 5, '5_prime_UTR_variant': 5, 'intron_variant': 4}"
