@@ -1,0 +1,21 @@
+--dir_cache "/Volumes/Seagate 8/.vep"#!/bin/bash
+
+--dir_cache "/Volumes/Seagate 8/.vep"#!/bin/bash
+
+--dir_cache "/Volumes/Seagate 8/.vep"#!/bin/bash
+
+--dir_cache "/Volumes/Seagate 8/.vep"#!/bin/bash
+
+/Users/geetmacbookpro/vep_project/ensembl-vep/vep \
+  --input_file "/Volumes/Seagate 8/BRCA-pathway-classifier/data/clinvar_data/brca_clinvar_highconf.vcf.gz" \
+  --output_file "/Volumes/Seagate 8/BRCA-pathway-classifier/data/raw/brca_vep_output.txt" \
+  --vcf \
+  --everything \
+  --symbol \
+  --plugin LoF \
+  --force_overwrite \
+  --cache \
+  --offline \
+  --merged \
+  --CACHEDIR "/Volumes/Seagate 8/.vep" \
+  --assembly GRCh38
