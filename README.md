@@ -1,32 +1,22 @@
+# BRCA VEP Offline Setup
 
-# BRCA Classifier Final - VEP Annotation
+This project sets up Ensembl VEP (Variant Effect Predictor) for offline annotation of BRCA ClinVar variants on macOS with cache stored on external hard drive.
 
-## 🧬 Variant Annotation with VEP
+## Folder Structure
 
-This script annotates high-confidence BRCA1/2 variants using Ensembl VEP with the merged cache.
-
-### ✅ Requirements
-
-- Ensembl VEP installed locally
-- VEP cache for GRCh38 with `--merged` format
-- LoF plugin
-- Input VCF: `brca_clinvar_highconf.vcf.gz`
-
-### 📁 File Structure
-
-- Input: `~/brca_classifier/clinvar_data/brca_clinvar_highconf.vcf.gz`
-- Output: `data/raw/brca_vep_output.txt`
-
-### ▶️ How to Run
-
-```bash
-bash scripts/run_vep_annotate.sh
+```
+BRCA-pathway-classifier/
+├── install/
+│   ├── setup_vep.sh
+│   └── setup_bio_db_hts.sh
+├── scripts/
+│   └── run_vep.sh
 ```
 
-Ensure the cache has been downloaded using:
+## Instructions
 
-```bash
-perl INSTALL.pl --NO_HTSLIB --ASSEMBLY GRCh38 --CACHEDIR ~/.vep
-```
+1. Run `install/setup_vep.sh` to install VEP and cache to external drive
+2. Run `install/setup_bio_db_hts.sh` to manually build Bio::DB::HTS
+3. Run `scripts/run_vep.sh` to annotate your VCF
 
-> Note: This script assumes macOS local VEP install and paths configured.
+> Make sure the Homo sapiens cache file finishes downloading completely.
