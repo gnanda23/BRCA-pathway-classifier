@@ -1,22 +1,25 @@
-# BRCA VEP Offline Setup
+# BRCA Pathway Classifier: VEP Setup
 
-This project sets up Ensembl VEP (Variant Effect Predictor) for offline annotation of BRCA ClinVar variants on macOS with cache stored on external hard drive.
+This repository contains input/output files and scripts to reproduce the Ensembl Variant Effect Predictor (VEP) analysis for BRCA1/2 variants.
 
-## Folder Structure
+## Files
 
+- `data/raw/brca_input_fixed.vcf`: Cleaned VCF input file (chr17 and chr13)
+- `data/raw/brca_vep_output.tsv`: Annotated VEP output file (tab-delimited)
+- `scripts/run_vep.sh`: Shell script to run VEP with offline cache
+- `README.md`: This documentation
+
+## Reproduction Instructions
+
+Run the following:
+```bash
+bash scripts/run_vep.sh
 ```
-BRCA-pathway-classifier/
-├── install/
-│   ├── setup_vep.sh
-│   └── setup_bio_db_hts.sh
-├── scripts/
-│   └── run_vep.sh
-```
 
-## Instructions
+Ensure VEP is installed and offline cache is present in `/Volumes/Seagate8/.vep`.
 
-1. Run `install/setup_vep.sh` to install VEP and cache to external drive
-2. Run `install/setup_bio_db_hts.sh` to manually build Bio::DB::HTS
-3. Run `scripts/run_vep.sh` to annotate your VCF
+## Notes
 
-> Make sure the Homo sapiens cache file finishes downloading completely.
+- VEP version: 115
+- Assembly: GRCh38
+- Uses `--everything` for full annotations
