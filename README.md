@@ -1,110 +1,79 @@
 # BRCA Pathway Classifier
 
-A reproducible variant annotation pipeline for identifying and analyzing **BRCA1/BRCA2 genetic variants**, with downstream integration of **pathway, environmental, and clinical annotations**. This repository is designed to power a machine learning model that predicts variant pathogenicity using multi-source enrichment.
+This repository contains a reproducible pipeline for annotating BRCA1/BRCA2 variants using the Ensembl Variant Effect Predictor (VEP), and summarizing key variant statistics for downstream ML applications.
 
 ---
 
-## 🔬 Project Goals
-
-- Annotate BRCA1 and BRCA2 variants using Ensembl’s Variant Effect Predictor (VEP)
-- Identify functional consequences and severity of variants
-- Integrate variant annotations with pathway databases and chemical perturbation sources
-- Build a machine learning model to classify BRCA variant pathogenicity
-
----
-
-## 📂 Repository Structure
+## 📁 Project Structure
 
 ```
 BRCA-pathway-classifier/
-│
 ├── data/
-│   ├── raw/
-│   │   └── brca_input_fixed.vcf              # Clean input file with BRCA variants
-│   └── processed/
-│       └── brca_vep_output.tsv               # VEP-annotated TSV output
-│
-├── scripts/
-│   └── run_vep.sh                            # Reproducible bash script to run VEP
+│   ├── raw/                     # Input files to VEP
+│   │   ├── brca_input_fixed.vcf
+│   │   └── brca_vep_output.tsv
+│   └── processed/               # Cleaned and filtered outputs from VEP
+│       ├── brca_vep_output_clean.csv
+│       ├── brca_vep_filtered.tsv
+│       └── brca_vep_filtered_BRCA1_2.tsv
 │
 ├── results/
-│   ├── brca_summary_statistics.csv           # Summary stats in CSV format
-│   └── brca_summary_statistics.md            # Markdown version of summary
+│   ├── tables/
+│   │   ├── brca_summary_statistics.csv
+│   │   └── brca_summary_statistics.md
+│   └── figures/                 # Reserved for future plots
 │
-└── README.md                                 # This file
+├── scripts/
+│   └── run_vep.sh               # VEP wrapper script
+│
+├── notebooks/
+│   └── 01_feature_engineering.ipynb
+│
+├── logs/
+│   └── vep_install_notes.txt.rtf
+│
+├── README.md
+├── .gitignore
+└── GITHUB_SETUP.md
 ```
 
 ---
 
-## 🚀 How to Reproduce the Pipeline
+## 🧪 Pipeline Overview
 
-### 1. Set Up Ensembl VEP
+### Step 1: Prepare VCF Input
+The file `brca_input_fixed.vcf` contains curated BRCA1 and BRCA2 variants.
 
-Follow the official instructions:  
-https://www.ensembl.org/info/docs/tools/vep/script/vep_installation.html
-
-Or run:
-
-```bash
-perl INSTALL.pl \
-  --AUTO c \
-  --SPECIES homo_sapiens \
-  --ASSEMBLY GRCh38 \
-  --CACHEDIR /your/cache/path \
-  --NO_HTSLIB
-```
-
----
-
-### 2. Run VEP Annotation
-
-Make sure your `.vep` cache and FASTA are installed.
-
-To annotate the BRCA variants, run:
-
+### Step 2: Run VEP
+Use the wrapper script:
 ```bash
 bash scripts/run_vep.sh
 ```
+This generates the annotated output: `brca_vep_output.tsv`.
 
-This uses:
-- `data/raw/brca_input_fixed.vcf` as input
-- Outputs to `data/processed/brca_vep_output.tsv`
-
----
-
-### 3. View Summary Statistics
-
-Find top-level summaries in:
-- `results/brca_summary_statistics.md` (readable)
-- `results/brca_summary_statistics.csv` (structured)
+### Step 3: Filter and Summarize
+Key output files:
+- `brca_vep_filtered_BRCA1_2.tsv`: Only BRCA1 and BRCA2 transcripts
+- `brca_summary_statistics.csv`: Aggregated consequence and gene stats
 
 ---
 
-## 📌 Notes
+## 🚫 Not Included in GitHub
 
-- Assembly: **GRCh38**
-- VEP version: **v115.2**
-- Input: Variants from BRCA1 and BRCA2 (chr17 and chr13)
-- Output includes consequence terms, protein effects, and clinical annotations
-
----
-
-## 🧠 Next Steps
-
-- Filter for specific functional consequences (LoF, missense, etc.)
-- Map to biological pathways and environmental exposures
-- Build interpretable classification model (Phase 2)
+To comply with GitHub file size limits and licensing:
+- ClinVar and 1000 Genomes data files are not included
+- You may manually download these as needed from NCBI/ClinVar
 
 ---
 
-## 👩‍💻 Contributors
+## 📌 Requirements
 
-- Lead student researcher: [Name]
-- Mentor: [Name or leave blank]
-- Built with guidance from Ensembl, ClinVar, and CTDbase resources
+- Ensembl VEP (v115.2)
+- Perl 5, Homebrew (Mac), and VEP plugins
+- Python 3.8+ for notebooks and summary analysis
 
 ---
 
-## 📜 License
+## 👥 Author
 
-MIT License (add if desired)
+This pipeline is part of a research project exploring environmental modulation of BRCA variant pathogenicity.
