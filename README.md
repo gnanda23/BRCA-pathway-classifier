@@ -1,25 +1,46 @@
-# BRCA Pathway Classifier: VEP Setup
+# BRCA-pathway-classifier
 
-This repository contains input/output files and scripts to reproduce the Ensembl Variant Effect Predictor (VEP) analysis for BRCA1/2 variants.
+This repository contains all scripts and data for setting up and running the Ensembl Variant Effect Predictor (VEP) to annotate BRCA1/2 variants.
 
-## Files
+## 🔬 Project Summary
 
-- `data/raw/brca_input_fixed.vcf`: Cleaned VCF input file (chr17 and chr13)
-- `data/raw/brca_vep_output.tsv`: Annotated VEP output file (tab-delimited)
-- `scripts/run_vep.sh`: Shell script to run VEP with offline cache
-- `README.md`: This documentation
+This project is part of a broader machine learning effort to classify BRCA1 and BRCA2 variants based on genomic and environmental factors. This step involves annotating known BRCA variants using the Ensembl VEP offline tool with full cache and FASTA integration.
 
-## Reproduction Instructions
+## 📂 Folder Structure
 
-Run the following:
+```
+BRCA-pathway-classifier/
+├── README.md
+├── scripts/
+│   └── run_vep.sh
+├── data/
+│   └── raw/
+│       ├── brca_input_fixed.vcf
+│       └── brca_vep_output.tsv
+├── logs/
+│   └── vep_terminal_log.txt
+└── setup/
+    └── vep_install_notes.txt
+```
+
+## ⚙️ Prerequisites
+
+- macOS with Homebrew installed
+- Perl (pre-installed on macOS)
+- Modules installed via CPAN:
+  - `DBI`, `DBD::mysql`, `Archive::Zip`, `Getopt::Long`, etc.
+- Ensembl VEP v115+
+- External hard drive mounted at `/Volumes/Seagate8/`
+
+## 🚀 Run VEP
+
+To reproduce the VEP annotation run:
+
 ```bash
 bash scripts/run_vep.sh
 ```
 
-Ensure VEP is installed and offline cache is present in `/Volumes/Seagate8/.vep`.
+## 🗂️ Data Notes
 
-## Notes
-
-- VEP version: 115
-- Assembly: GRCh38
-- Uses `--everything` for full annotations
+- Input VCF: `data/raw/brca_input_fixed.vcf`
+- Output TSV: `data/raw/brca_vep_output.tsv`
