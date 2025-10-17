@@ -1,46 +1,61 @@
-# BRCA-pathway-classifier
+# BRCA Pathway Classifier: VEP Annotation Pipeline
 
-This repository contains all scripts and data for setting up and running the Ensembl Variant Effect Predictor (VEP) to annotate BRCA1/2 variants.
+This repository contains scripts and data files for annotating BRCA1 and BRCA2 variants using the Ensembl Variant Effect Predictor (VEP). The annotation is performed offline using a local cache on an external drive.
 
-## 🔬 Project Summary
+## 🔧 Requirements
 
-This project is part of a broader machine learning effort to classify BRCA1 and BRCA2 variants based on genomic and environmental factors. This step involves annotating known BRCA variants using the Ensembl VEP offline tool with full cache and FASTA integration.
+- Ensembl VEP (v115)
+- Local cache directory with species `homo_sapiens`, assembly `GRCh38`
+- FASTA file: `Homo_sapiens.GRCh38.dna.toplevel.fa.gz`
+- External storage mounted at: `/Volumes/Seagate8/`
 
-## 📂 Folder Structure
+## 📁 Directory Structure
 
 ```
 BRCA-pathway-classifier/
-├── README.md
-├── scripts/
-│   └── run_vep.sh
 ├── data/
 │   └── raw/
 │       ├── brca_input_fixed.vcf
 │       └── brca_vep_output.tsv
-├── logs/
-│   └── vep_terminal_log.txt
-└── setup/
-    └── vep_install_notes.txt
+├── scripts/
+│   └── run_vep.sh
+└── README.md
 ```
 
-## ⚙️ Prerequisites
+## 📥 Input
 
-- macOS with Homebrew installed
-- Perl (pre-installed on macOS)
-- Modules installed via CPAN:
-  - `DBI`, `DBD::mysql`, `Archive::Zip`, `Getopt::Long`, etc.
-- Ensembl VEP v115+
-- External hard drive mounted at `/Volumes/Seagate8/`
+VCF input file:  
+`data/raw/brca_input_fixed.vcf`
 
-## 🚀 Run VEP
+## 📤 Output
 
-To reproduce the VEP annotation run:
+VEP results (tab-delimited):  
+`data/raw/brca_vep_output.tsv`
+
+## ▶️ To Run
+
+Make sure the script is executable and run it using:
 
 ```bash
+chmod +x scripts/run_vep.sh
 bash scripts/run_vep.sh
 ```
 
-## 🗂️ Data Notes
+## ⚙️ Script Details
 
-- Input VCF: `data/raw/brca_input_fixed.vcf`
-- Output TSV: `data/raw/brca_vep_output.tsv`
+`scripts/run_vep.sh` runs the VEP with:
+
+- Offline mode (`--offline`)
+- Custom cache and FASTA path
+- Full annotation (`--everything`)
+- GRCh38 assembly
+- Output in TSV (`--tab`)
+
+## 🚫 Note
+
+- LoFTEE and other plugins are not currently active in this script.
+- Ensure the path `/Volumes/Seagate8/.vep` is correctly mounted and contains the appropriate VEP cache files.
+
+---
+
+© 2025 BRCA Pathway Classifier Project
