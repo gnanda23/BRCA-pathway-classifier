@@ -1,5 +1,8 @@
 # BRCA Pathway Classifier
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+
 This repository contains a reproducible pipeline for annotating BRCA1/BRCA2 variants using the Ensembl Variant Effect Predictor (VEP) and summarizing key variant statistics for downstream machine learning applications.
 
 ---
@@ -26,7 +29,8 @@ BRCA-pathway-classifier/
 │   ├── shap_beeswarm_brca2.png
 │   ├── top_shap_brca1.csv
 │   ├── top_shap_brca2.csv
-│   └── shap_values_brca1_vs_brca2.csv
+│   ├── shap_values_brca1_vs_brca2.csv
+│   └── SHAP_Interpretation_BRCA1_vs_BRCA2.pptx
 │
 ├── scripts/
 │   ├── run_vep.sh
@@ -111,3 +115,8 @@ source venv/bin/activate
 
 # Install required Python packages
 pip install -r requirements.txt
+```
+---
+
+📊 SHAP interpretation slides: [SHAP_Interpretation_BRCA1_vs_BRCA2.pptx](./SHAP_Interpretation_BRCA1_vs_BRCA2.pptx)
+
