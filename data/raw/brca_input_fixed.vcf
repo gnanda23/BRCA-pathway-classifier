@@ -1,5 +1,4 @@
 ##fileformat=VCFv4.2
-##source=BRCA-pathway-classifier
+##source=ClinVar BRCA1/2 subset
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
-17	43124028	.	T	G	.	.	.
-13	32316461	.	C	T	.	.	.
+##bcftools_viewCommand=view -i 'INFO/GENEINFO ~ "BRCA1|BRCA2"' -Oz -o brca_clinvar.vcf.gz clinvar.vcf.gz; Date=Thu Oct 16 13:34:36 2025

@@ -12,7 +12,7 @@ perl ~/vep_project/ensembl-vep/vep \
   --fasta "/Volumes/Seagate8/.vep/homo_sapiens/115_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa.gz" \
   --assembly GRCh38 \
   --input_file "$INPUT_FILE" \
-  --output_file "$OUTPUT_FILE" \
+  --OUTPUT_FILE="/Volumes/Seagate8/BRCA-pathway-classifier/data/processed/brca_vep_output.tsv"
   --tab \
   --force_overwrite \
   --everything

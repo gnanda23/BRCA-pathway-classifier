@@ -1,10 +1,27 @@
-| Metric                      | Value                                       |
-|:----------------------------|:--------------------------------------------|
-| Total Variants              | 0                                           |
-| Genes Affected              | 0                                           |
-| Most Frequent Consequences  | Series([], Name: Consequence, dtype: int64) |
-| Most Frequent IMPACT Scores | Series([], Name: IMPACT, dtype: int64)      |
-| Variant Classes             | {}                                          |
-| Unique Transcripts          | 0                                           |
-| Most Common Transcript IDs  | {}                                          |
-| BRCA Genes Detected         | {}                                          |
+# BRCA VEP Summary Statistics
+
+## Gene
+
+| feature   | Gene   | count   |
+|-----------|--------|---------|
+
+## Feature
+
+| feature   | Feature   | count   |
+|-----------|-----------|---------|
+
+## Consequence
+
+| feature   | Consequence   | count   |
+|-----------|---------------|---------|
+
+## SIFT
+
+| feature   | SIFT   | count   |
+|-----------|--------|---------|
+
+## PolyPhen
+
+| feature   | PolyPhen   | count   |
+|-----------|------------|---------|
+

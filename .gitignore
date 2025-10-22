@@ -20,6 +20,7 @@ Thumbs.db
 
 # VCF and annotation outputs
 *.vcf
+!data/raw/brca_input_brca_only.vcf
 *.tsv
 *.csv
 *.gz
