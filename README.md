@@ -77,3 +77,7 @@ To comply with GitHub file size limits and licensing:
 ## 👥 Author
 
 This pipeline is part of a research project exploring environmental modulation of BRCA variant pathogenicity.
+
+## 🔗 Download Large Feature File
+
+The enriched feature dataset (`brca_features_enriched.csv`, 448MB) is hosted in the [Releases](https://github.com/gnanda23/BRCA-pathway-classifier/releases) section.
