@@ -1,0 +1,1 @@
+##bcftools_viewCommand=view -i 'INFO/GENEINFO ~ "BRCA1|BRCA2"' -Oz -o brca_clinvar.vcf.gz clinvar.vcf.gz; Date=Thu Oct 16 13:34:36 2025
