@@ -9,60 +9,74 @@ This repository contains a reproducible pipeline for annotating BRCA1/BRCA2 vari
 ```
 BRCA-pathway-classifier/
 ├── data/
-│   ├── raw/                     # Input files to VEP
-│   │   ├── brca_input_fixed.vcf
-│   │   └── brca_vep_output.tsv
-│   └── processed/               # Cleaned and filtered outputs from VEP
-│       ├── brca_vep_output_clean.csv
-│       ├── brca_vep_filtered.tsv
-│       └── brca_vep_filtered_BRCA1_2.tsv
+│   ├── raw/
+│   │   └── brca_input_brca_only.vcf
+│   ├── external/
+│   │   └── brca_clinvar.vcf.gz
+│   └── processed/
+│       ├── brca_vep_output_filtered.tsv
+│       ├── brca_vep_output_all_filtered.tsv
+│       └── brca_features_enriched.csv
+│
+├── models/
+│   └── brca_sandbox_model.pkl
 │
 ├── results/
-│   ├── tables/
-│   │   ├── brca_summary_statistics.csv
-│   │   └── brca_summary_statistics.md
-│   └── figures/                 # Reserved for future plots
+│   ├── shap_values.csv
+│   ├── shap_beeswarm_brca1.png
+│   ├── shap_beeswarm_brca2.png
+│   ├── top_shap_brca1.csv
+│   ├── top_shap_brca2.csv
+│   └── shap_values_brca1_vs_brca2.csv
 │
 ├── scripts/
-│   └── run_vep.sh               # VEP wrapper script
+│   ├── run_vep.sh
+│   └── vep_summary_stats.py
 │
 ├── notebooks/
-│   └── 01_feature_engineering.ipynb
+│   ├── phase1_vep_annotation/
+│   │   ├── 01_vep_input_preparation.ipynb
+│   │   ├── 02_vep_annotation_pipeline.ipynb
+│   │   └── 03_vep_summary_statistics.ipynb
+│   ├── phase2_dataset_build/
+│   │   ├── 01_feature_engineering.ipynb
+│   │   └── final_01_feature_engineering.ipynb
+│   └── phase3_sandbox_model/
+│       └── 03_sandbox_model_brca1_vs_brca2_clean.ipynb
 │
-├── logs/
-│   └── vep_install_notes.txt.rtf
-│
+├── SHAP_Interpretation_BRCA1_vs_BRCA2.pptx
+├── Top 15 Features by SHAP Importance (BRCA1 vs BRCA2).png
 ├── README.md
-├── .gitignore
-└── GITHUB_SETUP.md
+└── .gitignore
 ```
+
+---
 
 ---
 
 ## 🧪 Pipeline Overview
 
-### Step 1: Prepare VCF Input
-The file `brca_input_fixed.vcf` contains curated BRCA1 and BRCA2 variants.
+### Phase 1: VEP Annotation
+- Input: `brca_input_brca_only.vcf`
+- Script: `scripts/run_vep.sh`
+- Output: `brca_vep_output_all_filtered.tsv`
 
-### Step 2: Run VEP
-Use the wrapper script:
-```bash
-bash scripts/run_vep.sh
-```
-This generates the annotated output: `brca_vep_output.tsv`.
+### Phase 2: Feature Engineering
+- Notebook: `01_feature_engineering.ipynb`
+- Output: `brca_features_enriched.csv` (hosted in Releases)
 
-### Step 3: Filter and Summarize
-Key output files:
-- `brca_vep_filtered_BRCA1_2.tsv`: Only BRCA1 and BRCA2 transcripts
-- `brca_summary_statistics.csv`: Aggregated consequence and gene stats
-
+### Phase 3: ML Modeling (Sandbox)
+- Notebook: `03_sandbox_model_brca1_vs_brca2_clean.ipynb`
+- Output:
+  - `brca_sandbox_model.pkl`
+  - SHAP plots and tables
 ---
 
 ## 🚫 Not Included in GitHub
 
-To comply with GitHub file size limits and licensing:
-- ClinVar and 1000 Genomes data files are not included
-- You may manually download these as needed from NCBI/ClinVar
+To comply with GitHub file size limits:
+- `brca_features_enriched.csv` is available [here](https://github.com/gnanda23/BRCA-pathway-classifier/releases)
+- ClinVar files must be downloaded manually from NCBI
 
 ---
 
@@ -81,3 +95,19 @@ This pipeline is part of a research project exploring environmental modulation o
 ## 🔗 Download Large Feature File
 
 The enriched feature dataset (`brca_features_enriched.csv`, 448MB) is hosted in the [Releases](https://github.com/gnanda23/BRCA-pathway-classifier/releases) section.
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/gnanda23/BRCA-pathway-classifier.git
+cd BRCA-pathway-classifier
+
+# (Optional) Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
